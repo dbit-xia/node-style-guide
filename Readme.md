@@ -11,38 +11,6 @@
 
 ![Creative Commons License](http://i.creativecommons.org/l/by-sa/3.0/88x31.png)
 
-## 2空格缩进
-
-使用2个空格而不是 tab 来进行代码缩进，同时绝对不要混用空格和 tab 。
-
-Sublime Text 2 设置(perfernces > Settings - User)：
-
-```
-  "tab_size": 2,
-  "translate_tabs_to_spaces": true
-```
-
-## 换行
-
-使用 UNIX 风格的换行符 (`\n`)，同时在每个文件的结尾添加一个换行符。
-Windows 风格的换行符 (`\r\n`) 是绝对禁止出现在任何项目中的。
-
-Sublime Text 2 设置(perfernces > Settings - User)：
-
-```
-  "default_line_ending": "unix"
-```
-
-## 去除行末尾的多余空格
-
-就像吃完饭要刷牙一样，在提交 (commit) 代码之前你需要清理掉所有的不必要的空格。
-
-Sublime Text2 设置(perfernces > Settings - User)：
-
-```
-  "trim_trailing_white_space_on_save": true
-```
-
 ## 使用分号
 
 是否使用分号，在社区争论已久。
@@ -53,13 +21,6 @@ isaac 也写过一篇讨论的[文章](http://blog.izs.me/post/2353458699/an-ope
 
 限制你每行代码不超过80个字符。尽管现在的显示器越来越大，但是你的大脑并没有变大，并且你还可以把你的大显示器切分成多屏来显示。
 
-Sublime Text 2 设置(perfernces > Settings - User)：
-
-```
-  "rulers": [80]
-```
-
-多屏：`view > Layout > Columns 2`
 
 ## 使用单引号
 
@@ -68,13 +29,13 @@ Sublime Text 2 设置(perfernces > Settings - User)：
 *Right:*
 
 ```js
-var foo = 'bar';
+let foo = 'bar';
 ```
 
 *Wrong:*
 
 ```js
-var foo = "bar";
+let foo = "bar";
 ```
 
 ## 大括号位置
@@ -100,20 +61,20 @@ if (true)
 
 同时，请注意在条件判断前后都添加一个空格。
 
-## 每个变量声明都带一个 var
+## 每个变量声明都带一个 let
 
-每个变量声明都带一个 var ，这样删除或者调整变量声明的顺序会更加容易。
+每个变量声明都带一个 let ，这样删除或者调整变量声明的顺序会更加容易。
 不要把变量都声明在最前面，而是声明在它最有意义的地方。
 
 *Right:*
 
 ```js
-var keys   = ['foo', 'bar'];
-var values = [23, 42];
+let keys   = ['foo', 'bar'];
+let values = [23, 42];
 
-var object = {};
+let object = {};
 while (items.length) {
-  var key = keys.pop();
+  let key = keys.pop();
   object[key] = values.pop();
 }
 ```
@@ -121,7 +82,7 @@ while (items.length) {
 *Wrong:*
 
 ```js
-var keys = ['foo', 'bar'],
+let keys = ['foo', 'bar'],
     values = [23, 42],
     object = {},
     key;
@@ -141,14 +102,14 @@ while (items.length) {
 *Right:*
 
 ```js
-var adminUser = db.query('SELECT * FROM users ...');
+let adminUser = db.query('SELECT * FROM users ...');
 ```
 
 *Wrong:*
 
 ```js
-var admin_user = db.query('SELECT * FROM users ...');
-var a = db.query('SELECT * FROM users ...');
+let admin_user = db.query('SELECT * FROM users ...');
+let a = db.query('SELECT * FROM users ...');
 ```
 
 ## 类名采用大驼峰
@@ -173,13 +134,10 @@ function bank_Account() {
 
 常量变量和对象的静态常量属性都需要特殊表明，通过全部大写的方式来表明。
 
-尽管 Node.js / V8 支持 mozilla 的 [const][const] 关键字，
-但是不幸的是，对象的属性并不支持这个关键字，而且 const 没有包含于任何一个 ECMA 规范中。
-
 *Right:*
 
 ```js
-var SECOND = 1 * 1000;
+const SECOND = 1 * 1000;
 
 function File() {
 }
@@ -206,8 +164,8 @@ File.fullPermissions = 0777;
 *Right:*
 
 ```js
-var a = ['hello', 'world'];
-var b = {
+let a = ['hello', 'world'];
+let b = {
   good: 'code',
   'is generally': 'pretty',
 };
@@ -216,10 +174,10 @@ var b = {
 *Wrong:*
 
 ```js
-var a = [
+let a = [
   'hello', 'world'
 ];
-var b = {"good": 'code'
+let b = {"good": 'code'
         , is generally: 'pretty'
         };
 ```
@@ -231,7 +189,7 @@ var b = {"good": 'code'
 *Right:*
 
 ```js
-var a = 0;
+let a = 0;
 if (a === '') {
   console.log('winning');
 }
@@ -241,7 +199,7 @@ if (a === '') {
 *Wrong:*
 
 ```js
-var a = 0;
+let a = 0;
 if (a == '') {
   console.log('losing');
 }
@@ -256,7 +214,7 @@ if (a == '') {
 *Right:*
 
 ```js
-var foo = (a === b)
+let foo = (a === b)
   ? 1
   : 2;
 ```
@@ -264,7 +222,7 @@ var foo = (a === b)
 *Wrong:*
 
 ```js
-var foo = (a === b) ? 1 : 2;
+let foo = (a === b) ? 1 : 2;
 ```
 
 ## 不要扩展内建类型
@@ -274,7 +232,7 @@ var foo = (a === b) ? 1 : 2;
 *Right:*
 
 ```js
-var a = [];
+let a = [];
 if (!a.length) {
   console.log('winning');
 }
@@ -287,7 +245,7 @@ Array.prototype.empty = function() {
   return !this.length;
 }
 
-var a = [];
+let a = [];
 if (a.empty()) {
   console.log('losing');
 }
@@ -300,7 +258,7 @@ if (a.empty()) {
 *Right:*
 
 ```js
-var isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
+let isValidPassword = password.length >= 4 && /^(?=.*\d).{4,}$/.test(password);
 
 if (isValidPassword) {
   console.log('winning');
@@ -361,7 +319,7 @@ function isPercentage(val) {
 
 ```js
 function isPercentage(val) {
-  var isInRange = (val >= 0 && val <= 100);
+  let isInRange = (val >= 0 && val <= 100);
   return isInRange;
 }
 ```
@@ -423,7 +381,7 @@ setTimeout(function() {
 
 ```js
 // 'ID_SOMETHING=VALUE' -> ['ID_SOMETHING=VALUE'', 'SOMETHING', 'VALUE']
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
 // This function has a nasty side effect where a failure to increment a
 // redis counter used for statistics will cause an exception. This needs
@@ -432,7 +390,7 @@ function loadUser(id, cb) {
   // ...
 }
 
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 if (isSessionValid) {
   // ...
 }
@@ -442,7 +400,7 @@ if (isSessionValid) {
 
 ```js
 // Execute a regex
-var matches = item.match(/ID_([^\n]+)=([^\n]+)/));
+let matches = item.match(/ID_([^\n]+)=([^\n]+)/));
 
 // Usage: loadUser(5, function() { ... })
 function loadUser(id, cb) {
@@ -450,7 +408,7 @@ function loadUser(id, cb) {
 }
 
 // Check if the session is valid
-var isSessionValid = (session.expires < Date.now());
+let isSessionValid = (session.expires < Date.now());
 // If the session is valid
 if (isSessionValid) {
   // ...
@@ -524,7 +482,7 @@ stringDecoder.js
 *Right:*
 
 ```js
-var add = function (a, b) {
+let add = function (a, b) {
   return a + b;
 };
 ```
@@ -532,7 +490,7 @@ var add = function (a, b) {
 *Wrong:*
 
 ```js
-var add=function(a,b){
+let add=function(a,b){
   return a+b;
 }
 ```
