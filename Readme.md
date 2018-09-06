@@ -459,6 +459,7 @@ util.inherits(Socket, stream.Stream);
 ## 文件命名
 
 单词之间使用 `_` underscore 来分割,或用小驼峰规范，如果你不想暴露某个文件给用户，你也可以用 `_` 来开头
+
 类定义文件,可使用大写字母开头
 
 *Right:*
