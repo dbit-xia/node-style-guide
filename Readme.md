@@ -324,27 +324,6 @@ function isPercentage(val) {
 }
 ```
 
-## 给你的闭包命名
-
-请尽量给你的闭包、匿名函数命名。
-这让人知道你在意这个函数，更重要的是，这将会产生可读性更好的堆栈跟踪和CPU调用信息等。
-
-*Right:*
-
-```js
-req.on('end', function onEnd() {
-  console.log('winning');
-});
-```
-
-*Wrong:*
-
-```js
-req.on('end', function() {
-  console.log('losing');
-});
-```
-
 ## 不要嵌套闭包
 
 使用闭包，但是不要嵌套他们，否则你的代码将会一团糟。
